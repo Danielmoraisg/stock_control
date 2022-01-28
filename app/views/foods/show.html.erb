@@ -8,6 +8,8 @@
     <div class="btn-group gap-3">
       <%= button_to "Edit this food", "/foods/#{@food.id}/edit", method: :get, :class => "btn btn-warning"%>
       <%= button_to "Remove this food from list", "/foods/#{@food.id}", method: :delete, :class => "btn btn-danger"%>
+      <%= button_to "Add 1 unit", "/foods", method: :get, :class => "btn btn-info"%>
+      <%= button_to "Remove 1 unit", "/foods", method: :patch, :class => "btn btn-secondary"%>
     </div>
     <div class="card-footer text-muted"> <%="Created at: #{@food.created_at} | Updated at#{@food.updated_at}"%> </div>
   </div>

@@ -57,6 +57,13 @@ class FoodsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /foods/1 or /foods/1.json
+  def add_1
+    @food = Food.find(params[:id])
+    @food.quantity = 3
+    @food.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food
