@@ -57,6 +57,22 @@ class FoodsController < ApplicationController
     end
   end
 
+  # add add 1 unit of food
+  def add_1
+    @food = Food.find(params[:id])
+    @food.quantity = @food.quantity + 1
+    @food.save
+    redirect_to @food
+  end
+
+  # remove add 1 unit of food
+  def remove_1
+    @food = Food.find(params[:id])
+    @food.quantity = @food.quantity - 1
+    @food.save
+    redirect_to @food
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food
