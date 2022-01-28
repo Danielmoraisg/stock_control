@@ -57,11 +57,20 @@ class FoodsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /foods/1 or /foods/1.json
+  # add add 1 unit of food
   def add_1
     @food = Food.find(params[:id])
-    @food.quantity = 3
+    @food.quantity = @food.quantity + 1
     @food.save
+    redirect_to @food
+  end
+
+  # remove add 1 unit of food
+  def remove_1
+    @food = Food.find(params[:id])
+    @food.quantity = @food.quantity - 1
+    @food.save
+    redirect_to @food
   end
 
   private
