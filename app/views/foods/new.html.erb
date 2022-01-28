@@ -1,9 +1,9 @@
-<h1>New food</h1>
+<h1 class="text-center">Add food</h1>
 
 <%= render "form", food: @food %>
 
 <br>
 
-<div>
-  <%= link_to "Back to foods", foods_path %>
+<div class="btn-group gap-3">
+  <%= button_to "Back to foods", "/foods", method: :get, :class => "btn btn-warning"%>
 </div>
