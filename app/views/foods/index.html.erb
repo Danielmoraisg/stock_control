@@ -1,14 +1,23 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Foods</h1>
+<h1 class="text-center">Food list</h1>
 
 <div id="foods">
   <% @foods.each do |food| %>
-    <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
+    <div class="card text-center mt-3">
+      <img hidden class="card-img-top" src="..." alt="Card image cap">
+      
+      <div class="card-body">
+        <h5 class="card-title"><%= "#{food.name} [#{food.quantity}]" %></h5>
+        <p class="card-text"><%= food.description %></p>
+        <p class="card-text"><%= "Good thru: #{food.spoilage}" %></p>
+        <div class="btn-group gap-3">
+          <%= button_to "Show this food", "/foods/#{food.id}", method: :get, :class => "btn btn-success"%>
+          <%= button_to "Edit this food", "/foods/#{food.id}/edit", method: :get, :class => "btn btn-warning"%>
+          <%= button_to "Remove this food from list", "/foods/#{food.id}", method: :delete, :class => "btn btn-danger"%>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
 <%= link_to "New food", new_food_path %>
+
