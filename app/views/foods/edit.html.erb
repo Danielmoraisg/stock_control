@@ -2,9 +2,7 @@
 
 <%= render "form", food: @food %>
 
-<br>
-
-<div class="btn-group gap-3">
+<div class="btn-group gap-3 mt-2 mb-1">
   <%= button_to "Show this food", "/foods/#{@food.id}", method: :get, :class => "btn btn-primary"%>
   <%= button_to "Back to foods", "/foods", method: :get, :class => "btn btn-warning"%>
 </div>

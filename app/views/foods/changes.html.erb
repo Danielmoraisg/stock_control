@@ -1,0 +1,24 @@
+<table class="table table-hover table-sm">
+<thead>
+    <tr>
+    <th scope="col">Food</th>
+    <th scope="col">Original stock </th>
+    <th scope="col">Moviment</th>
+    <th scope="col">current stock</th>
+    </tr>
+</thead>
+    <% @audits.each do |audit| %>
+        <% if (audit.audited_changes["quantity"].class == Float) %>
+            <% next %>
+        <% else %>
+            <tbody>
+                <tr>
+                    <td> <%= @food.name%> </td>
+                    <td> <%= audit.audited_changes["quantity"][0]%> </td>
+                    <td> <%= audit.audited_changes["quantity"][1] - audit.audited_changes["quantity"][0] %> </td>
+                    <td> <%= audit.audited_changes["quantity"][1]%> </td>
+                </tr>
+        <% end %>
+        </tbody>
+    <% end %>
+</table>

@@ -73,6 +73,12 @@ class FoodsController < ApplicationController
     redirect_to @food
   end
 
+  def changes
+    @food = Food.find(params[:id])
+    @audits = @food.audits
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_food

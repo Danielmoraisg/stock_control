@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'foods/:id/add_1', to: 'foods#add_1'
   get 'foods/:id/remove_1', to: 'foods#remove_1'
+  get 'foods/:id/changes', to: 'foods#changes'
   # Defines the root path route ("/")
   root 'pages#home'
 end

@@ -68,6 +68,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    audited (5.0.2)
+      activerecord (>= 5.0, < 7.1)
     bindex (0.8.1)
     bootsnap (1.10.2)
       msgpack (~> 1.2)
@@ -225,6 +227,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  audited (~> 5.0)
   bootsnap
   capybara
   debug

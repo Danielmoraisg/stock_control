@@ -1,17 +1,30 @@
+
 <div class="card bg-light">
+  <div class="card-header text-muted"> <%="Created at: #{@food.created_at} | Updated at: #{@food.updated_at}"%> </div>
   <img hidden class="card-img-top" src="..." alt="Card image cap">
         
   <div class="card-body text-center ">
     <h5 class="card-title"><%= "#{@food.name} [#{@food.quantity}]" %></h5>
     <p class="card-text"><%= @food.description %></p>
     <p class="card-text"><%= "Good thru: #{@food.spoilage}" %></p>
-    <div class="btn-group gap-3">
-      <%= button_to "Edit this food", "/foods/#{@food.id}/edit", method: :get, :class => "btn btn-warning"%>
-      <%= button_to "Remove this food from list", "/foods/#{@food.id}", method: :delete, :class => "btn btn-danger"%>
-      <%= button_to "Add 1 unit", "/foods/#{@food.id}/add_1", method: :get, :class => "btn btn-primary"%>
-      <%= button_to "Remove 1 unit", "/foods/#{@food.id}/remove_1", method: :get, :class => "btn btn-danger"%>
+    <div class="btn-toolbar mb-3" style="justify-content: center; display: flex;">
+      <div class="btn-group gap-1" role="group">
+        <%= button_to "Add 1 unit", "/foods/#{@food.id}/add_1", method: :get, :class => "btn btn-primary"%>
+        <%= button_to "Remove 1 unit", "/foods/#{@food.id}/remove_1", method: :get, :class => "btn btn-danger"%>
+      </div>
     </div>
-    <div class="card-footer text-muted"> <%="Created at: #{@food.created_at} | Updated at#{@food.updated_at}"%> </div>
+    <div class="btn-toolbar" style="justify-content: center; display: flex;" > 
+      <div class="btn-group gap-1" role="group">
+        <%= button_to "Edit this food", "/foods/#{@food.id}/edit", method: :get, :class => "btn btn-warning"%>
+        <%= button_to "Remove this food", "/foods/#{@food.id}", method: :delete, :class => "btn btn-danger"%>
+      </div>
+    </div>
+    
+    <%= button_to "Change history", "/foods/#{@food.id}/changes", method: :get, :class => "btn btn-success btn-lg w-100 mt-2"%>
   </div>
+</div>
+
+
+
 </div>
 <%= link_to "Food List", foods_path %>
