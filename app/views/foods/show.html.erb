@@ -13,12 +13,12 @@
     <p class="card-text"><%= "Good thru: #{@food.spoilage}" %></p>
     <div class="input-group mb-3">
       <span class="input-group-text">Add</span>
-      <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+      <input type="number" class="form-control">
       <span class="input-group-text">units</span>
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text">Remove</span>
-      <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+      <input type="number" class="form-control">
       <span class="input-group-text">units</span>
     </div>
     <div class="btn-toolbar" style="justify-content: center; display: flex;" > 
@@ -30,12 +30,6 @@
     
     <%= button_to "Change history", "/foods/#{@food.id}/changes", method: :get, :class => "btn btn-success btn-lg w-100 mt-2"%>
   </div>
-</div>
-
-<div class="input-group mb-3">
-  <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-text">.00</span>
 </div>
 
 </div>
