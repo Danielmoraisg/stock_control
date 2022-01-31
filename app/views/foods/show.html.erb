@@ -4,14 +4,22 @@
   <img hidden class="card-img-top" src="..." alt="Card image cap">
         
   <div class="card-body text-center ">
-    <h5 class="card-title"><%= "#{@food.name} [#{@food.quantity}]" %></h5>
+    <div id="card-title" class="card-title text-center">
+      <%= button_to "+", "/foods/#{@food.id}/add_1", method: :get, :class => "btn btn-primary pull-left btn-xl ", form: {style: 'display:inline-block;'}%>
+      <span> <%= "#{@food.name} [#{@food.quantity}]" %> </span>
+      <%= button_to "-", "/foods/#{@food.id}/remove_1", method: :get, :class => "btn btn-danger pull-right btn-xl", form: {style: 'display:inline-block;'}%>
+    </div>
     <p class="card-text"><%= @food.description %></p>
     <p class="card-text"><%= "Good thru: #{@food.spoilage}" %></p>
-    <div class="btn-toolbar mb-3" style="justify-content: center; display: flex;">
-      <div class="btn-group gap-1" role="group">
-        <%= button_to "Add 1 unit", "/foods/#{@food.id}/add_1", method: :get, :class => "btn btn-primary"%>
-        <%= button_to "Remove 1 unit", "/foods/#{@food.id}/remove_1", method: :get, :class => "btn btn-danger"%>
-      </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Add</span>
+      <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+      <span class="input-group-text">units</span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Remove</span>
+      <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+      <span class="input-group-text">units</span>
     </div>
     <div class="btn-toolbar" style="justify-content: center; display: flex;" > 
       <div class="btn-group gap-1" role="group">
@@ -24,7 +32,11 @@
   </div>
 </div>
 
-
+<div class="input-group mb-3">
+  <span class="input-group-text">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <span class="input-group-text">.00</span>
+</div>
 
 </div>
 <%= link_to "Food List", foods_path %>
