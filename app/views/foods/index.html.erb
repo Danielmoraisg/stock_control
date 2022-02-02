@@ -1,4 +1,4 @@
-<h1 class="text-center">Food list</h1>
+<h1 class="text-center">STOCK</h1>
 
 <div id="foods">
   <% @foods.each do |food| %>
@@ -11,8 +11,6 @@
         <p class="card-text"><%= "Good thru: #{food.spoilage}" %></p>
         <div class="btn-group gap-3">
           <%= button_to "Show this food", "/foods/#{food.id}", method: :get, :class => "btn btn-success"%>
-          <%= button_to "Edit this food", "/foods/#{food.id}/edit", method: :get, :class => "btn btn-warning"%>
-          <%= button_to "Remove this food from list", "/foods/#{food.id}", method: :delete, :class => "btn btn-danger"%>
         </div>
       </div>
     </div>

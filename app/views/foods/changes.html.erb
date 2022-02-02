@@ -4,11 +4,12 @@
     <th scope="col">Food</th>
     <th scope="col">Original stock </th>
     <th scope="col">Moviment</th>
-    <th scope="col">current stock</th>
+    <th scope="col">Current stock</th>
+    <th scope="col">Changed at</th>
     </tr>
 </thead>
     <% @audits.each do |audit| %>
-        <% if (audit.audited_changes["quantity"].class == Float) %>
+        <% if (audit.audited_changes["quantity"].class == Float) | (audit.audited_changes["quantity"] == nil)  %>
             <% next %>
         <% else %>
             <tbody>
@@ -17,6 +18,7 @@
                     <td> <%= audit.audited_changes["quantity"][0]%> </td>
                     <td> <%= audit.audited_changes["quantity"][1] - audit.audited_changes["quantity"][0] %> </td>
                     <td> <%= audit.audited_changes["quantity"][1]%> </td>
+                    <td> <%= audit.audited_changes["updated_at"][1]%> </td>
                 </tr>
         <% end %>
         </tbody>
