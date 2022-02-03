@@ -73,6 +73,14 @@ class FoodsController < ApplicationController
     redirect_to @food
   end
 
+  def add
+    @food = Food.find(params[:id])
+    @food.quantity = @food.quantity + params[:add].to_f
+    @food.quantity = @food.quantity - params[:remove].to_f
+    @food.save
+    redirect_to @food
+  end
+
   def changes
     @food = Food.find(params[:id])
     @audits = @food.audits
@@ -88,5 +96,6 @@ class FoodsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def food_params
       params.require(:food).permit(:name, :description, :quantity, :spoilage)
+      #params.permit(:food, :name, :description, :quantity, :spoilage)
     end
 end

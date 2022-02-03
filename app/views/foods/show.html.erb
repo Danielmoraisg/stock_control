@@ -1,4 +1,3 @@
-
 <div class="card bg-light">
   <div class="card-header text-muted"> <%="Created at: #{@food.created_at} | Updated at: #{@food.updated_at}"%> </div>
   <img hidden class="card-img-top" src="..." alt="Card image cap">
@@ -11,26 +10,30 @@
     </div>
     <p class="card-text"><%= @food.description %></p>
     <p class="card-text"><%= "Good thru: #{@food.spoilage}" %></p>
-    <div class="input-group mb-3">
-      <span class="input-group-text">Add</span>
-      <input type="number" class="form-control">
-      <span class="input-group-text">units</span>
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text">Remove</span>
-      <input type="number" class="form-control">
-      <span class="input-group-text">units</span>
-    </div>
+    <%= form_with url: "/foods/#{@food.id}/add", html: {class: "row gy-2 gx-3 align-items-center d-flex justify-content-center align-items-center container  "} do |form|%>
+        <div class="col-auto text-center">
+          <%= form.label :add, "Add units"  %>
+          <%= form.number_field :add, :class=>'input form-control', placeholder: "0", type: "number", step: "0.1" %>
+        </div>
+        <div class="col-auto text-center">
+          <%= form.label :remove, "Remove units"  %>
+          <%= form.number_field :remove, :class=>'input form-control', placeholder: "0", type: "number", step: "0.1" %>
+        </div>
+      <div class="btn-toolbar" style="justify-content: center;" >
+        <%= form.submit  class: "btn btn-success mb-3 "%>
+      </div>
+    <% end %>
     <div class="btn-toolbar" style="justify-content: center; display: flex;" > 
       <div class="btn-group gap-1" role="group">
-        <%= button_to "Edit this food", "/foods/#{@food.id}/edit", method: :get, :class => "btn btn-warning"%>
+        <%= button_to "Edit this food", "/foods/#{@food.id}/edit", method: :get, :class => "btn btn-secondary"%>
         <%= button_to "Remove this food", "/foods/#{@food.id}", method: :delete, :class => "btn btn-danger"%>
       </div>
     </div>
     
-    <%= button_to "Change history", "/foods/#{@food.id}/changes", method: :get, :class => "btn btn-success btn-lg w-100 mt-2"%>
+    <%= button_to "History", "/foods/#{@food.id}/changes", method: :get, :class => "btn btn-success btn-lg w-100 mt-2"%>
   </div>
-</div>
+  
+
 
 </div>
-<%= link_to "Food List", foods_path %>
+
