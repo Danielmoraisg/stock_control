@@ -18,7 +18,7 @@
                     <td> <%= audit.audited_changes["quantity"][0]%> </td>
                     <td> <%= audit.audited_changes["quantity"][1] - audit.audited_changes["quantity"][0] %> </td>
                     <td> <%= audit.audited_changes["quantity"][1]%> </td>
-                    <td> <%= audit.audited_changes["updated_at"][1]%> </td>
+                    <td> <%= audit.audited_changes["updated_at"][-1]%> </td>
                 </tr>
         <% end %>
         </tbody>
@@ -29,7 +29,9 @@
   <%= button_to "Show this food", "/foods/#{@food.id}", method: :get, :class => "btn btn-primary"%>
   <%= button_to "Back to foods", "/foods", method: :get, :class => "btn btn-warning"%>
 </div>
+ 
+<%= @array %>
 
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
-
-
+<%= pie_chart Food.group(:name).count %>

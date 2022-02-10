@@ -84,6 +84,15 @@ class FoodsController < ApplicationController
   def changes
     @food = Food.find(params[:id])
     @audits = @food.audits
+    @array = Array.new(@audits.size) do |i|
+      if (@audits[i].audited_changes["quantity"].class == Float)
+        {"quantity" => @audits[i].audited_changes["quantity"], "updated_at" => @audits[i].audited_changes["updated_at"][-1]}
+      elsif (@audits[i].audited_changes["quantity"] == nil)
+        next
+      else
+        {"quantity" => @audits[i].audited_changes["quantity"][-1], "updated_at" => @audits[i].audited_changes["updated_at"][-1]}
+      end
+    end
 
   end
 
