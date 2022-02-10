@@ -86,11 +86,11 @@ class FoodsController < ApplicationController
     @audits = @food.audits
     @array = Array.new(@audits.size) do |i|
       if (@audits[i].audited_changes["quantity"].class == Float)
-        {"quantity" => @audits[i].audited_changes["quantity"], "updated_at" => @audits[i].audited_changes["updated_at"][-1]}
+        {"quantity" => @audits[i].audited_changes["quantity"], "updated_at" => @audits[i].audited_changes["updated_at"][-1].to_s[0..9]}
       elsif (@audits[i].audited_changes["quantity"] == nil)
         next
       else
-        {"quantity" => @audits[i].audited_changes["quantity"][-1], "updated_at" => @audits[i].audited_changes["updated_at"][-1]}
+        {"quantity" => @audits[i].audited_changes["quantity"][-1], "updated_at" => @audits[i].audited_changes["updated_at"][-1].to_s[0..9]}
       end
     end
 

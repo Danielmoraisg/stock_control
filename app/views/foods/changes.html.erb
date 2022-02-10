@@ -29,9 +29,8 @@
   <%= button_to "Show this food", "/foods/#{@food.id}", method: :get, :class => "btn btn-primary"%>
   <%= button_to "Back to foods", "/foods", method: :get, :class => "btn btn-warning"%>
 </div>
+
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
  
 <%= @array %>
 
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-
-<%= pie_chart Food.group(:name).count %>
