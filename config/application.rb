@@ -22,5 +22,6 @@ module StockControl
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = :local
+    Groupdate.time_zone = false
   end
 end

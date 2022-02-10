@@ -7,6 +7,9 @@ ruby "3.1.0"
 gem 'tzinfo-data'
 gem 'tzinfo'
 
+gem "chartkick"
+gem "groupdate"
+
 gem 'sassc-rails'
 
 gem "audited", "~> 5.0"
