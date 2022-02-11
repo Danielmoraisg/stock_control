@@ -27,6 +27,7 @@
       <div class="btn-group gap-1" role="group">
         <%= button_to "Edit this food", "/foods/#{@food.id}/edit", method: :get, :class => "btn btn-secondary"%>
         <%= button_to "Remove this food", "/foods/#{@food.id}", method: :delete, :class => "btn btn-danger"%>
+        <%= button_to "Back to foods", "/foods", method: :get, :class => "btn btn-warning"%>
       </div>
     </div>
     
