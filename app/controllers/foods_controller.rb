@@ -84,16 +84,27 @@ class FoodsController < ApplicationController
   def changes
     @food = Food.find(params[:id])
     @audits = @food.audits
-    @array = Array.new(@audits.size) do |i|
+    array = Array.new(@audits.size) do |i|
       if (@audits[i].audited_changes["quantity"].class == Float)
         {"quantity" => @audits[i].audited_changes["quantity"], "updated_at" => @audits[i].audited_changes["updated_at"][-1].to_s[0..9]}
       elsif (@audits[i].audited_changes["quantity"] == nil)
         next
       else
-        {"quantity" => @audits[i].audited_changes["quantity"][-1], "updated_at" => @audits[i].audited_changes["updated_at"][-1].to_s[0..9]}
+        {"quantity" => @audits[i].audited_changes["quantity"][-1] - @audits[i].audited_changes["quantity"][0] + @audits[i-1].audited_changes["quantity"][-1], "updated_at" => @audits[i].audited_changes["updated_at"][-1].to_s[0..9]}
+        #{"quantity" => @audits[i].audited_changes["quantity"][-1] - @audits[i-1].audited_changes["quantity"][-1], "updated_at" => @audits[i].audited_changes["updated_at"][-1].to_s[0..9]}
       end
     end
-
+    df = array.group_by { |hash| hash["updated_at"] }.map do |_k, values| 
+      values.reduce({}) do |a, e| 
+        a.merge(e) do |key, old_val, new_val| 
+          key == "quantity" ? old_val += new_val : old_val
+        end
+      end
+    end
+    @chartkick_hash = {} 
+    df.each do |hash|
+      @chartkick_hash[hash["updated_at"]] = hash["quantity"]
+    end
   end
 
   private
